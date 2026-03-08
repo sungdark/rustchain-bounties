@@ -17,7 +17,7 @@ const httpsAgent = new https.Agent({
   rejectUnauthorized: false,
 });
 
-async function request<T>(path: string, method: string = "GET", data?: any): Promise<T> {
+async function request(path: string, method: string = "GET", data?: any): Promise<any> {
   for (const node of NODES) {
     try {
       const response = await axios({
@@ -113,11 +113,11 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
   };
 });
 
-server.setRequestHandler(CallToolRequestSchema, async (request) => {
+server.setRequestHandler(CallToolRequestSchema, async (req) => {
   try {
-    switch (request.params.name) {
+    switch (req.params.name) {
       case "rustchain_balance": {
-        const { miner_id } = request.params.arguments as any;
+        const { miner_id } = req.params.arguments as any;
         const data = await request(`/wallet/balance?miner_id=${miner_id}`);
         return {
           content: [{ type: "text", text: JSON.stringify(data, null, 2) }]
@@ -155,7 +155,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       }
 
       case "rustchain_transfer": {
-        const { from_wallet, to_wallet, amount, private_key } = request.params.arguments as any;
+        const { from_wallet, to_wallet, amount, private_key } = req.params.arguments as any;
         const data = await request("/wallet/transfer", "POST", {
           from: from_wallet,
           to: to_wallet,
@@ -168,7 +168,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       }
 
       case "rustchain_ledger": {
-        const { wallet_id } = request.params.arguments as any;
+        const { wallet_id } = req.params.arguments as any;
         const data = await request(`/wallet/ledger?miner_id=${wallet_id}`);
         return {
           content: [{ type: "text", text: JSON.stringify(data, null, 2) }]
@@ -190,7 +190,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       }
 
       default:
-        throw new Error(`Unknown tool: ${request.params.name}`);
+        throw new Error(`Unknown tool: ${req.params.name}`);
     }
   } catch (error) {
     return {
