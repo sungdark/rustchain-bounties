@@ -288,3 +288,4 @@ Hunters can use these dynamic Shields.io badges in their own READMEs or profiles
 ./scripts/post_issue374_followup.sh 374 --dry-run
 ./scripts/post_issue374_followup.sh 374
 ```
+test
