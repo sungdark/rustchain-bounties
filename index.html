@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silicon Obituary — Hardware Eulogy Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=IM+Fell+English:ital@0;1&family=Courier+Prime&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-border"></div>
+    <div class="container">
+        <header class="header">
+            <div class="cross">✝</div>
+            <h1 class="title">Silicon Obituary</h1>
+            <p class="subtitle">Hardware Eulogy Generator</p>
+            <div class="divider">
+                <span class="divider-line"></span>
+                <span class="divider-ornament">⚱️</span>
+                <span class="divider-line"></span>
+            </div>
+        </header>
+
+        <section class="generator">
+            <p class="intro">Enter the name of the departed hardware below, and witness its final farewell.</p>
+            <div class="input-group">
+                <input type="text" id="hardware-input" placeholder="e.g. RTX 3090, MacBook M1, iPhone 6s..." maxlength="60">
+                <button id="generate-btn">Generate Eulogy</button>
+            </div>
+        </section>
+
+        <div id="loading" class="loading hidden">
+            <div class="loading-text">Composing eulogy<span class="dots"></span></div>
+        </div>
+
+        <article id="obituary" class="obituary hidden">
+            <div class="obituary-border">
+                <div class="obituary-inner">
+                    <div class="obituary-header">
+                        <p class="born">Born</p>
+                        <p class="date" id="birth-date"></p>
+                    </div>
+
+                    <h2 class="hardware-name" id="hardware-name"></h2>
+                    <p class="hardware-subtitle" id="hardware-subtitle"></p>
+
+                    <div class="specs-section">
+                        <h3>Technical Specifications</h3>
+                        <div id="specs" class="specs-grid"></div>
+                    </div>
+
+                    <div class="obituary-divider"></div>
+
+                    <section class="eulogy-section">
+                        <h3>🕊️ Eulogy</h3>
+                        <p id="eulogy-text"></p>
+                    </section>
+
+                    <div class="obituary-divider"></div>
+
+                    <section class="legacy-section">
+                        <h3>📜 Legacy</h3>
+                        <p id="legacy-text"></p>
+                    </section>
+
+                    <div class="obituary-divider"></div>
+
+                    <section class="epitaph-section">
+                        <p class="epitaph-label">Epitaph</p>
+                        <blockquote class="epitaph" id="epitaph-text"></blockquote>
+                    </section>
+
+                    <div class="obituary-divider"></div>
+
+                    <section class="cause-section">
+                        <p class="cause-label">Cause of Demise</p>
+                        <p id="cause-text"></p>
+                    </section>
+
+                    <div class="obituary-footer">
+                        <p class="dates-buried">
+                            <span id="death-date"></span> — <span id="end-date"></span>
+                        </p>
+                        <p class="resting-place">Resting Place: Silicon Heaven</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button id="share-btn" class="action-btn">📤 Share</button>
+                <button id="download-btn" class="action-btn">📥 Download</button>
+                <button id="new-btn" class="action-btn">🔄 New Eulogy</button>
+            </div>
+        </article>
+
+        <footer class="footer">
+            <p>Silicon Obituary — Honoring the hardware that gave everything.</p>
+        </footer>
+    </div>
+    <div class="page-border"></div>
+
+    <script src="obituary.js"></script>
+</body>
+</html>

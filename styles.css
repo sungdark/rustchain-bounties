@@ -1,0 +1,414 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #f5f0e8;
+    --paper-color: #faf7f0;
+    --ink-color: #1a1a1a;
+    --accent-color: #8b0000;
+    --gold-color: #8b7355;
+    --border-color: #2a2a2a;
+    --muted-color: #555;
+    --faded-color: #888;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--ink-color);
+    font-family: 'IM Fell English', Georgia, serif;
+    min-height: 100vh;
+    line-height: 1.7;
+}
+
+.page-border {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 16px;
+    background: var(--ink-color);
+    z-index: 100;
+}
+
+.page-border:first-of-type { top: 0; }
+.page-border:last-of-type { bottom: 0; }
+
+.container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 40px;
+}
+
+.header {
+    text-align: center;
+    padding: 40px 0 30px;
+}
+
+.cross {
+    font-size: 3rem;
+    color: var(--ink-color);
+    margin-bottom: 8px;
+    opacity: 0.7;
+}
+
+.title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-color);
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--muted-color);
+    letter-spacing: 0.05em;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.divider-line {
+    flex: 1;
+    max-width: 100px;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.divider-ornament {
+    font-size: 1.2rem;
+}
+
+.generator {
+    text-align: center;
+    padding: 30px 20px;
+    background: var(--paper-color);
+    border: 3px double var(--border-color);
+    margin-bottom: 40px;
+}
+
+.intro {
+    font-style: italic;
+    color: var(--muted-color);
+    margin-bottom: 24px;
+    font-size: 1rem;
+}
+
+.input-group {
+    display: flex;
+    gap: 12px;
+    max-width: 520px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#hardware-input {
+    flex: 1;
+    min-width: 220px;
+    padding: 12px 16px;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 1rem;
+    border: 2px solid var(--border-color);
+    background: #fff;
+    color: var(--ink-color);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#hardware-input:focus {
+    border-color: var(--accent-color);
+}
+
+#hardware-input::placeholder {
+    color: var(--faded-color);
+}
+
+#generate-btn {
+    padding: 12px 28px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--ink-color);
+    color: var(--paper-color);
+    border: 2px solid var(--ink-color);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+#generate-btn:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+}
+
+.loading-text {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--muted-color);
+}
+
+.loading-text .dots::after {
+    content: '';
+    animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: ''; }
+    40% { content: '.'; }
+    60% { content: '..'; }
+    80%, 100% { content: '...'; }
+}
+
+.hidden { display: none !important; }
+
+.obituary {
+    margin-bottom: 40px;
+}
+
+.obituary-border {
+    border: 4px double var(--border-color);
+    padding: 8px;
+    background: var(--paper-color);
+    position: relative;
+}
+
+.obituary-border::before,
+.obituary-border::after {
+    content: '❧';
+    position: absolute;
+    font-size: 1.5rem;
+    color: var(--ink-color);
+    opacity: 0.4;
+}
+
+.obituary-border::before { top: -12px; left: 50%; transform: translateX(-50%); }
+.obituary-border::after { bottom: -12px; left: 50%; transform: translateX(-50%) rotate(180deg); }
+
+.obituary-inner {
+    border: 1px solid var(--border-color);
+    padding: 40px 36px;
+    text-align: center;
+}
+
+.obituary-header {
+    margin-bottom: 24px;
+}
+
+.born {
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faded-color);
+    margin-bottom: 4px;
+}
+
+.date {
+    font-size: 0.9rem;
+    font-family: 'Courier Prime', monospace;
+    color: var(--muted-color);
+}
+
+.hardware-name {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-color);
+    margin-bottom: 4px;
+}
+
+.hardware-subtitle {
+    font-style: italic;
+    color: var(--muted-color);
+    font-size: 1rem;
+    margin-bottom: 24px;
+}
+
+.specs-section {
+    margin-bottom: 24px;
+}
+
+.specs-section h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-color);
+    margin-bottom: 14px;
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+    text-align: center;
+}
+
+.spec-item {
+    padding: 8px;
+    border: 1px solid #ccc;
+    background: #f9f6f0;
+}
+
+.spec-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--faded-color);
+    display: block;
+    margin-bottom: 2px;
+}
+
+.spec-value {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.9rem;
+    color: var(--ink-color);
+}
+
+.obituary-divider {
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    margin: 24px auto;
+}
+
+.eulogy-section h3,
+.legacy-section h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-color);
+    margin-bottom: 12px;
+}
+
+.eulogy-section p,
+.legacy-section p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--ink-color);
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.epitaph-section {
+    margin: 8px 0;
+}
+
+.epitaph-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faded-color);
+    margin-bottom: 10px;
+}
+
+.epitaph {
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--ink-color);
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    border-left: 3px solid var(--accent-color);
+    border-right: 3px solid var(--accent-color);
+    line-height: 1.8;
+}
+
+.cause-section {
+    margin: 8px 0;
+}
+
+.cause-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faded-color);
+    margin-bottom: 8px;
+}
+
+.cause-section p {
+    font-size: 0.95rem;
+    color: var(--muted-color);
+    font-style: italic;
+}
+
+.obituary-footer {
+    margin-top: 24px;
+}
+
+.dates-buried {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
+    color: var(--muted-color);
+    margin-bottom: 6px;
+}
+
+.resting-place {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--faded-color);
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    padding: 10px 22px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: transparent;
+    color: var(--ink-color);
+    border: 2px solid var(--ink-color);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    background: var(--ink-color);
+    color: var(--paper-color);
+}
+
+.footer {
+    text-align: center;
+    padding: 24px 0;
+    font-style: italic;
+    color: var(--faded-color);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    .title { font-size: 2rem; }
+    .hardware-name { font-size: 1.6rem; }
+    .obituary-inner { padding: 28px 20px; }
+    .input-group { flex-direction: column; }
+    #hardware-input, #generate-btn { width: 100%; }
+}
